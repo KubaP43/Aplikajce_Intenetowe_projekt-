@@ -1,6 +1,6 @@
 # Klub_Stal_Stalowa_Wola
 
-Projekt zaliczeniowy aplikacji internetowej wykonanej w Laravelu. System obsluguje strone klubu Stal Stalowa Wola: terminarz, tabele ligowa, kadre, bilety, logowanie oraz panel prezesa.
+Projekt zaliczeniowy z tworzenia aplikacji internetowych. Jest to kompleksowy system obsługujący stronę klubu piłkarskiego Stal Stalowa Wola. Aplikacja pozwala na zarządzanie terminarzem, biletami oraz kadrą, a także posiada dedykowany panel administracyjny.
 
 ## Dane projektu
 
@@ -71,4 +71,5 @@ DB_DATABASE=Klub_Stal_Stalowa_Wola
 
 ## Dokumentacja
 
-Pelny opis projektu znajduje sie w pliku `Dokumentacja.md`. Podstawowa instrukcja korzystania z systemu znajduje sie w pliku `Podrecznik_Uzytkownika.txt`.
+Szczegóły techniczne: Pełny opis architektury znajduje się w pliku Dokumentacja.md.
+Obsługa aplikacji: Podstawowe informacje, jak poruszać się po gotowym systemie, znajdziesz w pliku Podrecznik_Uzytkownika.txt.
