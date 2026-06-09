@@ -4,8 +4,8 @@ Projekt zaliczeniowy aplikacji internetowej wykonanej w Laravelu. System obslugu
 
 ## Dane projektu
 
-- Autor: Jan Kowalski
-- Numer albumu: 111111
+- Autor: Jakub Pelic
+- Numer albumu: 134957
 - Technologia: Laravel, PHP, PostgreSQL, Blade, Tailwind CSS
 - Baza danych: `Klub_Stal_Stalowa_Wola`
 
