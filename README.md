@@ -34,7 +34,7 @@ E-mail: kibic@stal.pl
 Hasło: Stalow@123
 ```
 
-Konta tworzy seeder `database/seeders/UzytkownikSeeder.php`.
+(Aby utworzć konta należy wpisać seeder `database/seeders/UzytkownikSeeder.php`.)
 
 ## Uruchomienie
 
