@@ -51,7 +51,7 @@ DB_HOST=127.0.0.1
 DB_PORT=5433
 DB_DATABASE=Klub_Stal_Stalowa_Wola
 DB_USERNAME=postgres
-DB_PASSWORD=twoje_haslo
+DB_PASSWORD=postgres
 ```
 
 Jeśli PostgreSQL działa na innym porcie, np. `5432`, należy zmienić `DB_PORT`.
