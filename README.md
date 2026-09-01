@@ -11,13 +11,12 @@ Projekt aplikacji internetowej klubu piłkarskiego Stali Stalowa Wola występuj�
 
 ## Główne funkcje
 
-- Strona główna pokazuje dane z bazy: najbliższe mecze i czołówkę tabeli.
+- Strona główna pokazuje dane z bazy: najbliższe mecze i "czołówkę" tabeli.
 - Terminarz korzysta z relacji mecz - drużyna.
 - Tabela ligowa sortuje zespoły według punktów, bilansu bramek i strzelonych bramek.
 - Kadra posiada wyszukiwanie, filtrowanie i sortowanie.
 - Kibic może kupić maksymalnie jeden bilet na jeden mecz.
 - Prezes zarządza meczami, drużynami, kadrą i rezerwacjami.
-- Hasła są przechowywane jako hash, a plik `.env` nie jest publikowany.
 
 ## Konta testowe
 
