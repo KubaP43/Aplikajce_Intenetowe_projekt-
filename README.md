@@ -2,8 +2,6 @@
 
 Projekt aplikacji internetowej klubu piłkarskiego Stali Stalowa Wola występującego na co dzień w 2 lidze. Aplikacja obsługuje stronę klubu piłkarskiego Stal Stalowa Wola: stronę główną, terminarz, tabelę ligową, kadrę, bilety oraz panel prezesa.
 
-Repozytorium: https://github.com/KubaP43/Aplikajce_Intenetowe_projekt-
-
 ## Dane projektu
 
 - Autor: Jakub Pelic
