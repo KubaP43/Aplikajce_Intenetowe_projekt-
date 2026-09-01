@@ -53,27 +53,27 @@ DB_PASSWORD=postgres
 
 Jeśli PostgreSQL działa na innym porcie, np. `5432`, należy zmienić `DB_PORT`.
 
-4. Zainstaluj zależności:
+4. Zainstalować zależności:
 
 ```bash
 composer install
 ```
 
-5. Wygeneruj klucz aplikacji:
+5. Wygenerować klucz aplikacji:
 
 ```bash
 php artisan key:generate
 ```
 
-6. Utwórz pustą bazę `Klub_Stal_Stalowa_Wola` i zaimportuj plik `Klub_Stal_Stalowa_Wola.sql` w pgAdmin Query Tool.
+6. Utwórzyć pustą bazę `Klub_Stal_Stalowa_Wola` i zaimportuj plik `Klub_Stal_Stalowa_Wola.sql` w pgAdmin Query Tool.
 
-7. Utwórz konta testowe:
+7. Utworzyć konta testowe:
 
 ```bash
 php artisan db:seed --class=UzytkownikSeeder
 ```
 
-8. Uruchom aplikację:
+8. Uruchomić aplikację:
 
 ```bash
 php artisan serve
