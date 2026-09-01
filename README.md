@@ -38,9 +38,9 @@ Hasło: Stalow@123
 
 ## Uruchomienie
 
-1. Rozpakuj `Klub_Stal_Stalowa_Wola_Laravel_poprawiony.zip`.
-2. Skopiuj `.env.example` jako `.env`.
-3. Ustaw dane połączenia z PostgreSQL w `.env`, szczególnie:
+1. Należy rozpakowac `Klub_Stal_Stalowa_Wola_Laravel_poprawiony.zip`.
+2. Skopiować `.env.example` jako `.env`.
+3. Ustawic dane połączenia z PostgreSQL w `.env`, najważniesze:
 
 ```env
 DB_CONNECTION=pgsql
