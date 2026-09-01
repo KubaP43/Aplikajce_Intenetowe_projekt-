@@ -1,6 +1,6 @@
 # Klub_Stal_Stalowa_Wola
 
-Projekt zaliczeniowy z tworzenia aplikacji internetowych. Aplikacja obsługuje stronę klubu piłkarskiego Stal Stalowa Wola: stronę główną, terminarz, tabelę ligową, kadrę, bilety oraz panel prezesa.
+Projekt aplikacji internetowej klubu piłkarskiego Stali Stalowa Wola występującego na co dzień w 2 lidze. Aplikacja obsługuje stronę klubu piłkarskiego Stal Stalowa Wola: stronę główną, terminarz, tabelę ligową, kadrę, bilety oraz panel prezesa.
 
 Repozytorium: https://github.com/KubaP43/Aplikajce_Intenetowe_projekt-
 
