@@ -1,75 +1,96 @@
 # Klub_Stal_Stalowa_Wola
 
-Projekt zaliczeniowy z tworzenia aplikacji internetowych. Jest to kompleksowy system obsługujący stronę klubu piłkarskiego Stal Stalowa Wola. Aplikacja pozwala na zarządzanie terminarzem, biletami oraz kadrą, a także posiada dedykowany panel administracyjny.
+Projekt zaliczeniowy z tworzenia aplikacji internetowych. Aplikacja obsługuje stronę klubu piłkarskiego Stal Stalowa Wola: stronę główną, terminarz, tabelę ligową, kadrę, bilety oraz panel prezesa.
+
+Repozytorium: https://github.com/KubaP43/Aplikajce_Intenetowe_projekt-
 
 ## Dane projektu
 
 - Autor: Jakub Pelic
 - Numer albumu: 134957
-- Technologia: Laravel, PHP, PostgreSQL, Blade, Tailwind CSS
+- Technologia: PHP, Laravel, PostgreSQL, Blade, Tailwind CSS
 - Baza danych: `Klub_Stal_Stalowa_Wola`
 
-## Glowne funkcje
+## Główne funkcje
 
-- Strona glowna pokazuje dane z bazy: najblizsze mecze oraz czolowke tabeli.
-- Terminarz wyswietla mecze z relacja do tabeli druzyn.
-- Tabela ligowa sortuje zespoly wedlug punktow, bilansu bramek i liczby strzelonych bramek.
-- Kadra ma wyszukiwanie, filtrowanie i sortowanie pilkarzy.
-- Bilety mozna kupowac tylko po zalogowaniu.
-- Jeden kibic moze miec maksymalnie jeden bilet na jeden mecz.
-- Prezes widzi pelne dane kibicow kupujacych bilety i moze zarzadzac danymi.
-- Hasla sa przechowywane w bazie jako hash, nie jawnie.
+- Strona główna pokazuje dane z bazy: najbliższe mecze i czołówkę tabeli.
+- Terminarz korzysta z relacji mecz - drużyna.
+- Tabela ligowa sortuje zespoły według punktów, bilansu bramek i strzelonych bramek.
+- Kadra posiada wyszukiwanie, filtrowanie i sortowanie.
+- Kibic może kupić maksymalnie jeden bilet na jeden mecz.
+- Prezes zarządza meczami, drużynami, kadrą i rezerwacjami.
+- Hasła są przechowywane jako hash, a plik `.env` nie jest publikowany.
 
-## Konto prezesa
+## Konta testowe
 
 ```text
+Prezes:
 E-mail: prezes@stal.pl
-Haslo: 1938St@lowka
+Hasło: 1938St@lowka
+
+Kibic 1:
+E-mail: test@test.pl
+Hasło: Test@123456
+
+Kibic 2:
+E-mail: kibic@stal.pl
+Hasło: Stalow@123
 ```
+
+Konta tworzy seeder `database/seeders/UzytkownikSeeder.php`.
 
 ## Uruchomienie
 
-1. Skopiuj plik `.env.example` jako `.env`.
-2. Ustaw dane polaczenia z PostgreSQL w pliku `.env`.
-3. Zainstaluj zaleznosci:
+1. Rozpakuj `Klub_Stal_Stalowa_Wola_Laravel_poprawiony.zip`.
+2. Skopiuj `.env.example` jako `.env`.
+3. Ustaw dane połączenia z PostgreSQL w `.env`, szczególnie:
+
+```env
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5433
+DB_DATABASE=Klub_Stal_Stalowa_Wola
+DB_USERNAME=postgres
+DB_PASSWORD=twoje_haslo
+```
+
+Jeśli PostgreSQL działa na innym porcie, np. `5432`, należy zmienić `DB_PORT`.
+
+4. Zainstaluj zależności:
 
 ```bash
 composer install
 ```
 
-4. Wygeneruj klucz aplikacji:
+5. Wygeneruj klucz aplikacji:
 
 ```bash
 php artisan key:generate
 ```
 
-5. Wykonaj migracje i seedery:
+6. Utwórz pustą bazę `Klub_Stal_Stalowa_Wola` i zaimportuj plik `Klub_Stal_Stalowa_Wola.sql` w pgAdmin Query Tool.
+
+7. Utwórz konta testowe:
 
 ```bash
-php artisan migrate --seed
+php artisan db:seed --class=UzytkownikSeeder
 ```
 
-6. Uruchom serwer:
+8. Uruchom aplikację:
 
 ```bash
 php artisan serve
 ```
 
-Po uruchomieniu aplikacja jest dostepna pod adresem:
-
-```text
-http://127.0.0.1:8000
-```
-
-## Baza danych
-
-Do repozytorium dolaczony jest plik SQL z eksportem bazy. Mozna go zaimportowac w pgAdmin albo przez PostgreSQL, a nastepnie ustawic w `.env` nazwe bazy:
-
-```env
-DB_DATABASE=Klub_Stal_Stalowa_Wola
-```
+Aplikacja będzie dostępna pod adresem `http://127.0.0.1:8000`.
 
 ## Dokumentacja
 
-Szczegóły techniczne: Pełny opis architektury znajduje się w pliku Dokumentacja.md.
-Obsługa aplikacji: Podstawowe informacje, jak poruszać się po gotowym systemie, znajdziesz w pliku Podrecznik_Uzytkownika.txt.
+Dokumentacja techniczna jest dostępna jako osobny plik `Dokumentacja_Klub_Stal_Stalowa_Wola.docx`. Pełny zestaw dokumentacji, czyli Markdown, Word, podręcznik użytkownika oraz zrzuty ekranu, znajduje się także w pliku `Dokumentacja.zip`.
+
+## Bezpieczeństwo
+
+Do repozytorium nie należy wrzucać pliku `.env`, katalogu `vendor`, katalogu `node_modules`, logów, cache ani prywatnych sesji użytkowników.
+
+
+
