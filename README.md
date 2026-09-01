@@ -83,11 +83,4 @@ Aplikacja będzie dostępna pod adresem `http://127.0.0.1:8000`.
 
 ## Dokumentacja
 
-Dokumentacja techniczna jest dostępna jako osobny plik `Dokumentacja_Klub_Stal_Stalowa_Wola.docx`. Pełny zestaw dokumentacji, czyli Markdown, Word, podręcznik użytkownika oraz zrzuty ekranu, znajduje się także w pliku `Dokumentacja.zip`.
-
-## Bezpieczeństwo
-
-Do repozytorium nie należy wrzucać pliku `.env`, katalogu `vendor`, katalogu `node_modules`, logów, cache ani prywatnych sesji użytkowników.
-
-
-
+Dokumentacja techniczna jest dostępna jako osobny plik `Dokumentacja_Klub_Stal_Stalowa_Wola.docx`. Pełny zestaw dokumentacji (Markdown, Word, podręcznik użytkownika oraz zrzuty ekranu) znajduje się także w pliku `Dokumentacja.zip`.
