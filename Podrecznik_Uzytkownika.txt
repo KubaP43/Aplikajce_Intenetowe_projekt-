@@ -1,0 +1,175 @@
+Podręcznik Użytkownika
+Klub_Stal_Stalowa_Wola
+
+Role w tym systemie: gość, kibic i prezes mają różne uprawnienia. Gość tylko przegląda dane, kibic może kupować bilety, a prezes zarządza zasobami klubu.
+
+Kluczowe ścieżki użytkownika (User Flow)
+
+1.1. Przeglądanie strony jako gość
+
+Należy otworzyc aplikację w przeglądarce pod adresem http://127.0.0.1:8000.
+Gość może wejść na stronę główną oraz do zakładek: Terminarz, Tabela,  Kadra, Bilety, Historia i Kontakt.
+Na stronie głównej użytkownik widzi podstawowe informacje o klubie oraz dane pobierane z bazy, np. najbliższy mecz.
+W terminarzu gość widzi listę meczów, ale nie widzi przycisków Dodaj, Edytuj ani Usuń. Gość nie może dodawać, nie może edytować i nie może usuwać danych.
+W zakładce Bilety gość zobaczy komunikat zachęcający do logowania lub rejestracji, ponieważ zakup biletu wymaga konta.
+
+1.2. Rejestracja nowego konta kibica
+
+Należy kliknąć przycisk Zarejestruj.
+Wypełnić formularz rejestracji: imię, nazwisko, PESEL, datę urodzenia, e-mail i hasło.
+System sprawdza poprawność danych po stronie klienta i po stronie serwera.
+Jeśli dane są poprawne, konto zostaje utworzone.
+Jeśli dane są błędne, aplikacja pokaże komunikat i poprosi o poprawienie formularza.
+
+1.3. Logowanie do systemu
+
+Kliknąć przycisk Zaloguj.
+Wpisać adres e-mail i hasło.
+Po poprawnym logowaniu aplikacja rozpoznaje rolę użytkownika.
+Kibic widzi swoje funkcje związane z biletami, a prezes widzi dodatkowe opcje administracyjne.
+
+2.1. Zakup biletu przez kibica
+
+Kibic loguje się na swoje konto.
+Przechodzi do zakładki Bilety.
+Wybiera mecz z listy dostępnych spotkań.
+Wybiera trybunę.
+Wybiera typ biletu: normalny albo ulgowy.
+Zatwierdza formularz.
+System generuje kod biletu, np. STAL-1234-XYZ.
+Bilet pojawia się na liście Moje bilety.
+
+Kibic może kupic maksymalnie jeden bilet na jeden mecz.
+Jeżeli spróbuje kupić drugi bilet na to samo spotkanie, system zablokuje zapis i pokaże komunikat błędu.
+
+2.2. Przeglądanie i filtrowanie biletów
+
+Zalogowany kibic widzi swoje zakupione bilety.
+Bilety są sortowane od najbliższego meczu do najdalszego. Sortowanie pomaga szybciej znaleźć najbliższą rezerwację.
+Użytkownik może filtrować bilety po trybunie oraz typie biletu.
+Kibic może anulować wyłącznie własną rezerwację.
+
+3.1. Przeglądanie terminarza
+
+Terminarz pokazuje mecze zapisane w bazie danych.
+Przy każdym meczu widoczny jest przeciwnik, data, godzina oraz informacja, czy mecz jest domowy czy wyjazdowy.
+Gość i kibic mogą tylko przeglądać terminarz.
+Prezes po zalogowaniu widzi opcje Dodaj mecz, Edytuj i Usuń.
+
+3.2. CRUD zależny od drugiego zasobu: mecze i drużyny
+
+Mecze są głównym przykładem CRUD w aplikacji.
+Mecz jest powiązany z drużyną przez pole druzyna_id.
+Dzięki temu w formularzu prezes wybiera drużynę z listy, a nie wpisuje ręcznie identyfikatora.
+
+CREATE - dodanie meczu:
+Prezes klika Dodaj mecz w zakładce Terminarz.
+Wybiera przeciwnika z listy drużyn.
+Ustawia datę i godzinę meczu.
+Wybiera, czy mecz jest domowy czy wyjazdowy.
+System sprawdza dane i zapisuje mecz w bazie.
+
+READ - odczyt meczów:
+Lista meczów jest publiczna.
+Gość, kibic i prezes mogą ją przeglądać.
+Tylko prezes widzi przyciski administracyjne.
+
+UPDATE - edycja meczu:
+Prezes klika Edytuj przy wybranym meczu.
+Poprawia dane w formularzu.
+System ponownie wykonuje walidację po stronie serwera.
+Po zapisaniu terminarz pokazuje zaktualizowane dane.
+
+DELETE - usunięcie meczu:
+Prezes klika Usuń przy wybranym meczu.
+Usuwanie działa przez formularz z metodą DELETE i tokenem CSRF.
+Gość i zwykły kibic nie mają dostępu do tej operacji.
+
+4.1. Zarządzanie tabelą ligową przez prezesa
+
+W zakładce Tabela każdy użytkownik widzi klasyfikację ligową (tabele).
+Drużyny są sortowane według punktów.
+Prezes widzi dodatkowe przyciski Dodaj drużynę, Edytuj i Usuń.
+W formularzu może zmienić nazwę drużyny, punkty, liczbę meczów oraz bramki zdobyte i stracone.
+System blokuje błędne dane, np. ujemne punkty albo nazwę złożoną tylko z cyfr.
+
+4.2. Kadra zespołu
+
+W zakładce Kadra użytkownik widzi zawodników i sztab.
+Można wyszukiwać osoby po imieniu, nazwisku albo numerze.
+Można filtrować po pozycji oraz sortować wyniki, np. po numerze, nazwisku, występach lub golach.
+Prezes może dodawać i edytować osoby w kadrze.
+Formularze sprawdzają m.in. imię, nazwisko, numer zawodnika, pozycję i statystyki.
+
+5.1. Konta testowe i strefa prezesa
+
+Prezes:
+Login: prezes@stal.pl
+Hasło: 1938St@lowka
+
+Kibic 1:
+Login: test@test.pl
+Hasło: Test@123456
+
+Kibic 2:
+Login: kibic@stal.pl
+Hasło: Stalow@123
+
+Prezes ma dostęp do funkcji administracyjnych.
+Może zarządzać terminarzem, tabelą ligową, kadrą i rezerwacjami biletów.
+Zwykły zalogowany kibic nie ma dostępu do tych operacji.
+Dostęp jest zabezpieczony rolą użytkownika oraz middleware auth i prezes.
+
+5.2. Bezpieczeństwo
+
+Hasła są zapisane w bazie jako hash, a nie jako zwykły tekst.
+Formularze dodawania, edycji i usuwania korzystają z tokenów CSRF.
+Trasa /radar została usunięta, ponieważ ujawniała dane techniczne aplikacji.
+Plik .env nie powinien być publikowany w repozytorium ani w paczce ZIP.
+
+6.1. Walidacja i błędy
+
+System ma walidację po stronie klienta i walidację po stronie serwera.
+Walidacja po stronie klienta działa w formularzach HTML.
+Walidacja po stronie serwera działa w kontrolerach Laravel i chroni bazę przed błędnymi danymi.
+
+Przykłady blokowanych błędów:
+- imię lub nazwisko złożone z cyfr,
+- błędny PESEL,
+- zbyt słabe hasło,
+- data meczu z przeszłości,
+- data meczu dalsza niż rok do przodu,
+- numer zawodnika poza zakresem,
+- ujemne punkty albo statystyki,
+- nazwa drużyny złożona wyłącznie z cyfr,
+- drugi bilet tego samego kibica na ten sam mecz,
+- próba wejścia do panelu prezesa bez odpowiednich uprawnień.
+
+Jeżeli użytkownik wpisze błędne dane, formularz nie zostanie zapisany, a aplikacja pokaże komunikat z informacją, co trzeba poprawić.
+
+7.1. Dane przechowywane w systemie
+
+Aplikacja przechowuje:
+- użytkowników i role,
+- zahashowane hasła,
+- drużyny,
+- mecze,
+- tabelę ligową,
+- zawodników i sztab,
+- statystyki zawodników,
+- bilety i wygenerowane kody,
+- sesje zalogowanych użytkownikow. 
+
+Gość widzi tylko dane publiczne.
+Kibic widzi swoje bilety.
+Prezes ma szerszy dostęp do danych potrzebnych do zarządzania klubem.
+
+8.1. Responsywność
+
+Aplikacja jest dostosowana do różnych rozmiarów ekranu.
+Na mniejszych ekranach elementy układają się czytelnie, formularze dopasowują szerokość, a widoki pozostają wygodne do obsługi na tablecie lub laptopie.
+
+
+
+
+
